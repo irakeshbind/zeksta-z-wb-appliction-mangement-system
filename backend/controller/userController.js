@@ -54,7 +54,7 @@ export const loginUSer = async (req, res) => {
       { id: user.id, email: user.email },
         process.env.JWT_SECRET || "sbs123",
       { expiresIn: "1h" },
-      "sbs 123",
+      
     );
     res.status(200).json({
       name: user.name,

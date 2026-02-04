@@ -2,6 +2,7 @@ import express from "express";
 import sequelize from "./config/db.js";
 import userRoutes from "./view/routes.js";
 
+
 const app = express();
 
 // middleware

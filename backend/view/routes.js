@@ -12,6 +12,6 @@ router.post("/addUser", addUser);
 router.post('/loginUSer', loginUSer)
 
 // add employee routes
-router.post('/addEmp',authMiddleware,addEmp)
+router.post("/addEmp", authMiddleware, addEmp);
 
 export default router;

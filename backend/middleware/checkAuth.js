@@ -8,13 +8,15 @@ export const authMiddleware = (req, res, next) => {
         message: " no tkoen provid",
       });
     }
-      const token = authHeader.split(" ")[1];
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      req.user = decoded;
+    const token = authHeader.split(" ")[1];
+    console.log(process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
 
-      next();
-    
+    next();
   } catch (error) {
+    console.error(error);
+
     return res.status(401).json({ message: "Invalid or expired token" });
   }
 };

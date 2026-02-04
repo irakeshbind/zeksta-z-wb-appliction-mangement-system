@@ -1,8 +1,9 @@
 import addEmployee from "../model/addEmployee.js";
 
-
+// add empolyee api
 export const addEmp = async (req, res) => {
   try {
+    // console.log("hhhh")
     const { name, email, address, phone } = req.body;
 
     if (!name || !email || !address || !phone) {
@@ -19,3 +20,5 @@ export const addEmp = async (req, res) => {
     console.log(err);
   }
 };
+
+

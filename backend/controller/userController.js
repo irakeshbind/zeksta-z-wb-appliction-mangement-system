@@ -2,13 +2,13 @@ import User from "../model/userSchema.js";
 
 export const addUser = async (req, res) => {
   try {
-    const { name, email, phone } = req.body;
+    const { name, email, phone, password } = req.body;
 
-    if (!name || !email || !phone) {
+    if (!name || !email || !phone || !password) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
-    const user = await User.create({ name, email, phone });
+    const user = await User.create({ name, email, phone, password });
 
     res.status(201).json({
       success: true,

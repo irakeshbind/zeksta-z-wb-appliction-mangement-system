@@ -6,7 +6,7 @@ import {
   getAllEmployees,
   getEmployeeById,
   deleteEmployeeById,
-  updateData
+  updateEmployeeById,
 } from "../controller/addEmployees.js";
 
 // middleware
@@ -20,8 +20,8 @@ router.post("/loginUSer", loginUSer);
 // add employee routes
 router.post("/addEmp", authMiddleware, addEmp);
 router.get("/getAllEmployees", authMiddleware, getAllEmployees);
-router.get("/getEmployeeById", getEmployeeById);
-router.delete("/deleteEmployeeById", deleteEmployeeById);
-router.put("/updateData", authMiddleware, updateData);
+router.get("/getEmployeeById/:id", getEmployeeById);
+router.delete("/deleteEmployeeById:id", deleteEmployeeById);
+router.put("/updateEmployeeById/:id", authMiddleware, updateEmployeeById);
 
 export default router;

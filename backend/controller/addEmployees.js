@@ -23,7 +23,7 @@ export const addEmp = async (req, res) => {
 };
 
 // update employee api
-export const updateData = async (req, res) => {
+export const updateEmployeeById = async (req, res) => {
   try {
     const { id } = req.params; // employee id
     const { name, email, address, phone } = req.body;
@@ -57,6 +57,9 @@ export const updateData = async (req, res) => {
     });
   }
 };
+
+
+
 
 // getAll employess
 export const getAllEmployees = async (req, res) => {

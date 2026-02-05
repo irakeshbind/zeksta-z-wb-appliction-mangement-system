@@ -20,8 +20,8 @@ router.post("/loginUSer", loginUSer);
 // add employee routes
 router.post("/addEmp", authMiddleware, addEmp);
 router.get("/getAllEmployees", authMiddleware, getAllEmployees);
-router.get("/getEmployeeById/:id", getEmployeeById);
-router.delete("/deleteEmployeeById:id", deleteEmployeeById);
+router.get("/getEmployeeById/:id", authMiddleware, getEmployeeById);
+router.delete("/deleteEmployeeById/:id", authMiddleware, deleteEmployeeById);
 router.put("/updateEmployeeById/:id", authMiddleware, updateEmployeeById);
 
 export default router;

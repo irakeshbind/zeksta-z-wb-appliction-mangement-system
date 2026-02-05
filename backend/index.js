@@ -6,11 +6,10 @@ import dotenv from "dotenv";
 
 dotenv.config({ path: ".env" });
 const app = express();
-
+const PORT = process.env.PORT;
 // middleware
 app.use(express.json());
 
-// DB connection
 await sequelize.authenticate();
 console.log("PostgreSQL connected");
 
@@ -22,6 +21,6 @@ app.use("/api/users", userRoutes);
 app.use("/api/employee", employeeRoute);
 
 // server
-app.listen(4000, () => {
-  console.log("Server is running on port 4000");
+app.listen(PORT, () => {
+  console.log(`Server is running on port 4000 ${PORT}`);
 });

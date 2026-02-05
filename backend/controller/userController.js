@@ -53,7 +53,8 @@ export const loginUSer = async (req, res) => {
     console.log("53", process.env.JWT_SECRET);
 
     const token = jwt.sign(
-      { id: user.id, email: user.email },
+      { id: user.id, email: user.email, uId: user.id },
+
       process.env.JWT_SECRET || "sbs123",
       { expiresIn: "1h" },
     );
@@ -61,6 +62,7 @@ export const loginUSer = async (req, res) => {
       name: user.name,
       email: user.email,
       phone: user.phone,
+      uId: user.id,
       token,
     });
   } catch (err) {

@@ -22,5 +22,5 @@ app.use("/api/employee", employeeRoute);
 
 // server
 app.listen(PORT, () => {
-  console.log(`Server is running on port 4000 ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });

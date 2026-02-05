@@ -12,16 +12,19 @@ const Employees = sequelize.define(
       allowNull: false,
       unique: true,
     },
-    address:{
-        type:DataTypes.STRING,
-        allowNull:false
+    address: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
 
     phone: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    
+    uId: {
+      type: DataTypes.UUID,
+      allowNull: true,
+    },
   },
   {
     tableName: "employees",

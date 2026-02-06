@@ -40,32 +40,41 @@ export const addUser = async (req, res) => {
 export const loginUSer = async (req, res) => {
   try {
     const { email, password } = req.body;
-    if (!email || !password)
+
+    if (!email || !password) {
       return res.status(400).json({ message: "Email & password required" });
+    }
 
     const user = await User.findOne({ where: { email } });
-    if (!user) return res.status(404).json({ message: "User not found" });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
 
     const isValid = await bcrypt.compare(password, user.password);
-    if (!isValid)
+    if (!isValid) {
       return res.status(401).json({ message: "Invalid credentials" });
-
-    console.log("53", process.env.JWT_SECRET);
+    }
 
     const token = jwt.sign(
-      { id: user.id, email: user.email, uId: user.id },
-
+      {
+        id: user.id,
+        email: user.email,
+        userId: user.id,
+      },
       process.env.JWT_SECRET || "sbs123",
       { expiresIn: "1h" },
     );
+
     res.status(200).json({
+      success: true,
       name: user.name,
       email: user.email,
       phone: user.phone,
-      uId: user.id,
+      userId: user.id,
       token,
     });
   } catch (err) {
-    console.log(err);
+    console.error(err);
+    res.status(500).json({ message: "Login failed" });
   }
 };

@@ -1,7 +1,8 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/db.js";
-const User = sequelize.define(
-  "User",
+
+const addContent = sequelize.define(
+  "addContent",
   {
     id: {
       type: DataTypes.INTEGER,
@@ -9,27 +10,41 @@ const User = sequelize.define(
       autoIncrement: true,
       allowNull: false,
     },
+
     name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-    },
+
     phone: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        isNumeric: true,
+        len: [10, 15],
+      },
     },
-    password: {
+
+    text: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+
+    imageId: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
+    },
+
+    logoId: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
   },
   {
-    tableName: "users",
+    tableName: "content",
     timestamps: true,
+    underscored: true,
   },
 );
-export default User;
+
+export default addContent;

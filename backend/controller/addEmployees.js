@@ -7,13 +7,19 @@ export const addEmp = async (req, res) => {
     // console.log("hhhh")
     const { name, email, address, phone } = req.body;
 
-    if (!name || !email || !address || !phone) {
+    if (!name || !email || !address || !phone ) {
       return res.status(400).json({
         message: "all field required",
       });
     }
 
-    const employee = await addEmployee.create({ name, email, address, phone });
+    const employee = await addEmployee.create({
+      name,
+      email,
+      address,
+      phone,
+      
+    });
     res.status(200).json({
       message: "add sucesfull",
     });
@@ -26,9 +32,9 @@ export const addEmp = async (req, res) => {
 export const updateEmployeeById = async (req, res) => {
   try {
     const { id } = req.params; // employee id
-    const { name, email, address, phone } = req.body;
+    const { name, email, address, phone, } = req.body;
 
-    const employee = await Employees.findByPk(id);
+    const employee = await Employees.findByPk({ id });
 
     if (!employee) {
       return res.status(404).json({
@@ -58,9 +64,6 @@ export const updateEmployeeById = async (req, res) => {
   }
 };
 
-
-
-
 // getAll employess
 export const getAllEmployees = async (req, res) => {
   try {
@@ -80,32 +83,21 @@ export const getAllEmployees = async (req, res) => {
   }
 };
 
-//towmorrow practice
 // find by id
 export const getEmployeeById = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const employee = await addEmployee.findByPk(id);
+    const employee = await Employees.findByPk(id);
 
     if (!employee) {
-      return res.status(404).json({
-        success: false,
-        message: "Employee not found",
-      });
+      return res.status(404).json({ message: "Employee not found" });
     }
 
-    res.status(200).json({
-      success: true,
-      message: "Get successful",
-      data: employee,
-    });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({
-      success: false,
-      message: "Server error",
-    });
+    return res.status(200).json(employee); // ✅
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Server error" });
   }
 };
 

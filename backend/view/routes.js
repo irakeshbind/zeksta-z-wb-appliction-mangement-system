@@ -1,5 +1,6 @@
 import express from "express";
 
+// empolyees data routes
 import { addUser, loginUSer } from "../controller/userController.js";
 import {
   addEmp,
@@ -8,6 +9,8 @@ import {
   deleteEmployeeById,
   updateEmployeeById,
 } from "../controller/addEmployees.js";
+
+
 
 // middleware
 import { authMiddleware } from "../middleware/checkAuth.js";
@@ -23,5 +26,7 @@ router.get("/getAllEmployees", authMiddleware, getAllEmployees);
 router.get("/getEmployeeById/:id", authMiddleware, getEmployeeById);
 router.delete("/deleteEmployeeById/:id", authMiddleware, deleteEmployeeById);
 router.put("/updateEmployeeById/:id", authMiddleware, updateEmployeeById);
+
+
 
 export default router;

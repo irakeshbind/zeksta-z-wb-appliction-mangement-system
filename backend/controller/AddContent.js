@@ -72,3 +72,22 @@ export const getContentById = async () => {
     console.log(err);
   }
 };
+
+// delete content by id
+export const deleteContentById = async () => {
+  try {
+    const { id } = req.params.id;
+    const content = await addContent.findByPk(id);
+    if (!content) {
+      return res.status(404).json({
+        message: "content not found",
+      });
+    }
+    await content.destroy();
+    res.status(200).json({
+      data: content,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};

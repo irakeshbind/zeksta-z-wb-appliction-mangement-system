@@ -1,8 +1,8 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/db.js";
 
-const addContent = sequelize.define(
-  "addContent",
+const AddContent = sequelize.define(
+  "AddContent",
   {
     id: {
       type: DataTypes.INTEGER,
@@ -43,8 +43,8 @@ const addContent = sequelize.define(
   {
     tableName: "content",
     timestamps: true,
-    underscored: true,
-  },
+    // underscored: true,
+  }
 );
 
-export default addContent;
+export default AddContent;

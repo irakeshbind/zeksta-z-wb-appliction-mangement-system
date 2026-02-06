@@ -2,6 +2,7 @@ import express from "express";
 import sequelize from "./config/db.js";
 import userRoutes from "./view/routes.js";
 import employeeRoute from "./view/routes.js";
+// import contentRoute  from './view/routes.js'
 import dotenv from "dotenv";
 
 dotenv.config({ path: ".env" });
@@ -19,6 +20,7 @@ await sequelize.sync({ alter: true });
 // routes
 app.use("/api/users", userRoutes);
 app.use("/api/employee", employeeRoute);
+// app.use('/api/content',contentRoute);
 
 // server
 app.listen(PORT, () => {

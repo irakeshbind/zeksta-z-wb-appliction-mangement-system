@@ -1,7 +1,9 @@
 import express from "express";
 
-// empolyees data routes
+//user  data routes   import
 import { addUser, loginUSer } from "../controller/userController.js";
+
+// empolyees data routes   import
 import {
   addEmp,
   getAllEmployees,
@@ -10,7 +12,13 @@ import {
   updateEmployeeById,
 } from "../controller/addEmployees.js";
 
-
+// add content route import   bu it is not test api postman
+import {
+  AddContent,
+  updateContentById,
+  getContentById,
+  deleteContentById,
+} from "../controller/AddContent.js";
 
 // middleware
 import { authMiddleware } from "../middleware/checkAuth.js";
@@ -27,6 +35,10 @@ router.get("/getEmployeeById/:id", authMiddleware, getEmployeeById);
 router.delete("/deleteEmployeeById/:id", authMiddleware, deleteEmployeeById);
 router.put("/updateEmployeeById/:id", authMiddleware, updateEmployeeById);
 
-
+//  add content route
+router.post("/AddContent", AddContent);
+router.put("/ updateContentById", updateContentById);
+router.get("/getContentById", getContentById);
+router.get("/deleteContentById", deleteContentById);
 
 export default router;
